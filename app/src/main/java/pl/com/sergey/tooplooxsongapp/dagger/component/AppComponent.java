@@ -1,0 +1,18 @@
+package pl.com.sergey.tooplooxsongapp.dagger.component;
+
+
+
+import javax.inject.Singleton;
+
+import dagger.Component;
+import pl.com.sergey.tooplooxsongapp.dagger.modules.AppModule;
+import pl.com.sergey.tooplooxsongapp.dagger.modules.NetworkModule;
+
+/**
+ * Created by sergey on 27.11.17.
+ */
+@Singleton
+@Component(modules = {AppModule.class, NetworkModule.class})
+public interface AppComponent {
+
+}
