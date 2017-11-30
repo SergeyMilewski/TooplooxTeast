@@ -23,7 +23,7 @@ public class MyApplication extends Application {
         super.onCreate();
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
-                .networkModule(new NetworkModule(""))
+                .networkModule(new NetworkModule("https://itunes.apple.com/"))
                 .build();
 
     }

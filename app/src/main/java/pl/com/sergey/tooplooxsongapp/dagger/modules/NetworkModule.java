@@ -14,6 +14,9 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import pl.com.sergey.tooplooxsongapp.BuildConfig;
+import pl.com.sergey.tooplooxsongapp.api.ItunsApi;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -58,6 +61,11 @@ public class NetworkModule {
     OkHttpClient provideOkhttpClient(Cache cache) {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.cache(cache);
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            client.addInterceptor(interceptor);
+        }
         return client.build();
     }
 
@@ -73,5 +81,10 @@ public class NetworkModule {
 
     }
 
+    @Provides
+    @Singleton
+    ItunsApi providePracticalClassesApi(Retrofit retrofit) {
+        return retrofit.create(ItunsApi.class);
+    }
 
 }
