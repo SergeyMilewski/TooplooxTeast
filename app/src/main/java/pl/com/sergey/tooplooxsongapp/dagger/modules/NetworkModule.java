@@ -1,6 +1,7 @@
 package pl.com.sergey.tooplooxsongapp.dagger.modules;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -17,6 +18,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.com.sergey.tooplooxsongapp.BuildConfig;
 import pl.com.sergey.tooplooxsongapp.api.ItunsApi;
+import pl.com.sergey.tooplooxsongapp.api.LocalApi;
+import pl.com.sergey.tooplooxsongapp.api.LocalApiImpl;
+import pl.com.sergey.tooplooxsongapp.facade.DataFacade;
+import pl.com.sergey.tooplooxsongapp.facade.DataFacadeImpl;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -83,8 +88,20 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    ItunsApi providePracticalClassesApi(Retrofit retrofit) {
+    ItunsApi provideRemoteApi(Retrofit retrofit) {
         return retrofit.create(ItunsApi.class);
+    }
+
+    @Provides
+    @Singleton
+    DataFacade provideDataFacade(ItunsApi itunsApi, LocalApi localApi) {
+        return new DataFacadeImpl(itunsApi, localApi);
+    }
+
+    @Provides
+    @Singleton
+    LocalApi provideLocalApi(Application application) {
+        return new LocalApiImpl(application.getApplicationContext());
     }
 
 }

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">TooplooxSongApp</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">TooplooxSongApp</string>
+    <string name="ok">OK</string>
+    <string name="choose_filter">Choose Filters</string>
+    <string name="no_result">No result</string>
+    <string name="search">Search</string>
+    <string-array name="filter">
+        <item>By name</item>
+        <item>By artist</item>
+        <item>By release</item>
+    </string-array>
 </resources>

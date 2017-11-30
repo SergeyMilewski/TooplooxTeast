@@ -19,14 +19,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:gravity="center_vertical"
-                android:hint="search"
+                android:hint="@string/search"
+                android:textColorHint="@color/white"
                 android:inputType="text|textNoSuggestions"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
 
         </android.support.v7.widget.Toolbar>
-
-
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main.collapsing"
@@ -39,9 +38,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:background="@android:color/white">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="10dp"
+                android:orientation="vertical">
 
                 <include layout="@layout/header_layout" />
             </LinearLayout>
@@ -62,7 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="No result"
+        android:text="@string/no_result"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
         android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

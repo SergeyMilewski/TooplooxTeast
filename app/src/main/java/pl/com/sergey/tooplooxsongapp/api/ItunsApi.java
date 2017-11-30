@@ -13,7 +13,7 @@ public interface ItunsApi {
 
 
     @GET("search?")
-    Observable<ResultResponse> searchBySongs(@Query("term") String songs,@Query("media") String type, @Query("limit") String limit);
+    Observable<ResultResponse> searchSongs(@Query("term") String songs, @Query("media") String type, @Query("limit") String limit);
 
 
 }

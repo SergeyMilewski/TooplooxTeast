@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,8 @@
             android:layout_weight="0.5"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:textColor="@color/colorPrimary" />
+            android:text="Input for filter"
+            android:textColor="@color/colorAccent" />
 
         <TextView
             android:layout_width="0dp"
@@ -23,8 +25,8 @@
             android:layout_weight="0.5"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="choose filter"
-            android:textColor="@color/colorPrimary" />
+            android:text="Filter"
+            android:textColor="@color/colorAccent" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,15 +42,21 @@
             android:layout_weight="0.5"
             android:background="@drawable/background_filter">
 
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/period"
+            <TextView
+                android:id="@+id/filter_txt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:ellipsize="end"
                 android:fontFamily="sans-serif"
-                android:gravity="center" />
-
-
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </FrameLayout>
+
 
         <android.support.v4.widget.Space
             android:layout_width="16dp"
@@ -60,19 +68,22 @@
             android:layout_weight="0.5"
             android:background="@drawable/background_filter">
 
-            <TextView
-                android:id="@+id/filter"
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/filter_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ellipsize="end"
+                app:backgroundTint="@color/colorAccent"
                 android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:maxLines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:gravity="center" />
+
+            <View
+                android:id="@+id/click_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:visibility="gone" />
+
         </FrameLayout>
+
     </LinearLayout>
 </merge>

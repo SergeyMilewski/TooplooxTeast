@@ -17,22 +17,22 @@ public class LocalSong {
     private String aRTISTCLEAN;
     @SerializedName("Release Year")
     @Expose
-    private int releaseYear;
+    private String releaseYear;
     @SerializedName("COMBINED")
     @Expose
     private String cOMBINED;
     @SerializedName("First?")
     @Expose
-    private int first;
+    private String first;
     @SerializedName("Year?")
     @Expose
-    private int year;
+    private String year;
     @SerializedName("PlayCount")
     @Expose
-    private int playCount;
+    private String playCount;
     @SerializedName("F*G")
     @Expose
-    private int fG;
+    private String fG;
 
     public String getSongClean() {
         return songClean;
@@ -42,7 +42,7 @@ public class LocalSong {
         return aRTISTCLEAN;
     }
 
-    public int getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
@@ -50,22 +50,21 @@ public class LocalSong {
         return cOMBINED;
     }
 
-    public int getFirst() {
+    public String getFirst() {
         return first;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public int getPlayCount() {
+    public String getPlayCount() {
         return playCount;
     }
 
-    public int getfG() {
+    public String getfG() {
         return fG;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -74,28 +73,33 @@ public class LocalSong {
 
         LocalSong localSong = (LocalSong) o;
 
-        if (getReleaseYear() != localSong.getReleaseYear()) return false;
-        if (getFirst() != localSong.getFirst()) return false;
-        if (getYear() != localSong.getYear()) return false;
-        if (getPlayCount() != localSong.getPlayCount()) return false;
-        if (getfG() != localSong.getfG()) return false;
         if (getSongClean() != null ? !getSongClean().equals(localSong.getSongClean()) : localSong.getSongClean() != null)
             return false;
         if (getaRTISTCLEAN() != null ? !getaRTISTCLEAN().equals(localSong.getaRTISTCLEAN()) : localSong.getaRTISTCLEAN() != null)
             return false;
-        return getcOMBINED() != null ? getcOMBINED().equals(localSong.getcOMBINED()) : localSong.getcOMBINED() == null;
+        if (getReleaseYear() != null ? !getReleaseYear().equals(localSong.getReleaseYear()) : localSong.getReleaseYear() != null)
+            return false;
+        if (getcOMBINED() != null ? !getcOMBINED().equals(localSong.getcOMBINED()) : localSong.getcOMBINED() != null)
+            return false;
+        if (getFirst() != null ? !getFirst().equals(localSong.getFirst()) : localSong.getFirst() != null)
+            return false;
+        if (getYear() != null ? !getYear().equals(localSong.getYear()) : localSong.getYear() != null)
+            return false;
+        if (getPlayCount() != null ? !getPlayCount().equals(localSong.getPlayCount()) : localSong.getPlayCount() != null)
+            return false;
+        return getfG() != null ? getfG().equals(localSong.getfG()) : localSong.getfG() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getSongClean() != null ? getSongClean().hashCode() : 0;
         result = 31 * result + (getaRTISTCLEAN() != null ? getaRTISTCLEAN().hashCode() : 0);
-        result = 31 * result + getReleaseYear();
+        result = 31 * result + (getReleaseYear() != null ? getReleaseYear().hashCode() : 0);
         result = 31 * result + (getcOMBINED() != null ? getcOMBINED().hashCode() : 0);
-        result = 31 * result + getFirst();
-        result = 31 * result + getYear();
-        result = 31 * result + getPlayCount();
-        result = 31 * result + getfG();
+        result = 31 * result + (getFirst() != null ? getFirst().hashCode() : 0);
+        result = 31 * result + (getYear() != null ? getYear().hashCode() : 0);
+        result = 31 * result + (getPlayCount() != null ? getPlayCount().hashCode() : 0);
+        result = 31 * result + (getfG() != null ? getfG().hashCode() : 0);
         return result;
     }
 }
