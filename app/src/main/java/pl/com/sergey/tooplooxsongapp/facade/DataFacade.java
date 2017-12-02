@@ -1,8 +1,7 @@
 package pl.com.sergey.tooplooxsongapp.facade;
 
-import io.reactivex.Observable;
-import pl.com.sergey.tooplooxsongapp.pojo.LocalSong;
-import pl.com.sergey.tooplooxsongapp.pojo.ResultResponse;
+import io.reactivex.Flowable;
+import pl.com.sergey.tooplooxsongapp.dto.SongDto;
 
 /**
  * Created by smilevkiy on 30.11.17.
@@ -10,9 +9,7 @@ import pl.com.sergey.tooplooxsongapp.pojo.ResultResponse;
 
 public interface DataFacade {
 
-    Observable<ResultResponse> getListSongs(CharSequence song);
+    Flowable<SongDto> getListSongs(CharSequence song);
 
     void setSource(SourceType source);
-
-    LocalSong [] getLocalSongs();
 }

@@ -1,6 +1,10 @@
 package pl.com.sergey.tooplooxsongapp.dagger.modules;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,7 +23,14 @@ public class AppModule {
 
 
     @Provides
-    Application provideApplication(){
+    @Singleton
+    SharedPreferences providesSharedPreferences(Application application) {
+        return PreferenceManager.getDefaultSharedPreferences(application);
+    }
+
+
+    @Provides
+    Application provideApplication() {
         return mApplication;
     }
 

@@ -2,12 +2,23 @@
     <string name="app_name">TooplooxSongApp</string>
     <string name="title_activity_main">TooplooxSongApp</string>
     <string name="ok">OK</string>
+    <string name="no">NO</string>
     <string name="choose_filter">Choose Filters</string>
     <string name="no_result">No result</string>
     <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="choose_source">Choose source</string>
+    <string name="error_alert_title">Error alert</string>
+    <string name="common_error">Oops.. Something went wrong</string>
+    <string name="error_alert_message">Remote service is unreachable or no internet connection. Do you want to continue the search locally?</string>
     <string-array name="filter">
         <item>By name</item>
         <item>By artist</item>
         <item>By release</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="source">
+        <item>Local</item>
+        <item>Remote</item>
     </string-array>
 </resources>

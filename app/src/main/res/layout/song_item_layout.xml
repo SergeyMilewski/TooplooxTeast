@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -53,6 +54,20 @@
             android:maxLines="1"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/source_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/release_date"
+            android:layout_toRightOf="@id/photo"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:maxLines="1"
+            android:paddingRight="12dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            tools:text="Local" />
 
     </RelativeLayout>
 

@@ -1,8 +1,6 @@
 package pl.com.sergey.tooplooxsongapp.api;
 
-import java.util.List;
-
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import pl.com.sergey.tooplooxsongapp.pojo.LocalSong;
 
 /**
@@ -11,8 +9,6 @@ import pl.com.sergey.tooplooxsongapp.pojo.LocalSong;
 
 public interface LocalApi {
 
-    Observable<List<LocalSong>> searchSongsLocally(CharSequence charSequence);
-
-    LocalSong[] getLocalSongs();
+    Flowable<LocalSong> getLocalSongs();
 
 }

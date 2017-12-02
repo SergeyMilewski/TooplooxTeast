@@ -42,12 +42,6 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    SharedPreferences providesSharedPreferences(Application application) {
-        return PreferenceManager.getDefaultSharedPreferences(application);
-    }
-
-    @Provides
-    @Singleton
     Cache provideHttpCache(Application application) {
         int cacheSize = 10 * 1024 * 1024;
         return new Cache(application.getCacheDir(), cacheSize);
@@ -94,8 +88,8 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    DataFacade provideDataFacade(ItunsApi itunsApi, LocalApi localApi) {
-        return new DataFacadeImpl(itunsApi, localApi);
+    DataFacade provideDataFacade(ItunsApi itunsApi, LocalApi localApi, Application application) {
+        return new DataFacadeImpl(itunsApi, localApi, application.getApplicationContext());
     }
 
     @Provides

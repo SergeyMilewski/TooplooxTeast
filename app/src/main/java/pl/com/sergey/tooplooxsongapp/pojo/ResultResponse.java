@@ -22,6 +22,9 @@ public class ResultResponse {
         return resultCount;
     }
 
+    public ResultResponse() {
+    }
+
     public List<ItunsSong> getResults() {
         return results;
     }

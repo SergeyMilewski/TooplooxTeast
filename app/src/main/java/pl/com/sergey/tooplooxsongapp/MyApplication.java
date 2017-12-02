@@ -16,7 +16,6 @@ public class MyApplication extends Application {
 
     private AppComponent appComponent;
 
-
     @Override
     public void onCreate() {
 
@@ -27,7 +26,6 @@ public class MyApplication extends Application {
                 .build();
 
     }
-
     public AppComponent getAppComponent() {
         return appComponent;
     }

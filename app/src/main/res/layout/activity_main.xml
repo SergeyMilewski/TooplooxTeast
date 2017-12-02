@@ -2,30 +2,23 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/main.appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-            <EditText
-                android:id="@+id/search_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:gravity="center_vertical"
-                android:hint="@string/search"
-                android:textColorHint="@color/white"
-                android:inputType="text|textNoSuggestions"
-                android:maxLines="1"
-                android:textColor="@android:color/white" />
+        <!--  <android.support.v7.widget.Toolbar
+              android:id="@+id/toolbar"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize"
+              android:background="?attr/colorPrimary"> -->
 
-        </android.support.v7.widget.Toolbar>
+
+        <!--    </android.support.v7.widget.Toolbar> -->
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main.collapsing"
@@ -36,12 +29,29 @@
             app:expandedTitleMarginStart="0dp"
             app:layout_scrollFlags="scroll|enterAlways">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:paddingBottom="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/search_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    android:drawableLeft="@drawable/ic_search"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search"
+                    android:inputType="text|textNoSuggestions"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/white" />
 
                 <include layout="@layout/header_layout" />
             </LinearLayout>
@@ -55,6 +65,7 @@
         android:id="@+id/questions_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <TextView
@@ -63,9 +74,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/no_result"
-        android:textStyle="bold"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

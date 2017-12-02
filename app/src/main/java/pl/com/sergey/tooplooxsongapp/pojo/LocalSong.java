@@ -34,6 +34,17 @@ public class LocalSong {
     @Expose
     private String fG;
 
+    private LocalSong(Builder builder) {
+        songClean = builder.songClean;
+        aRTISTCLEAN = builder.aRTISTCLEAN;
+        releaseYear = builder.releaseYear;
+        cOMBINED = builder.cOMBINED;
+        first = builder.first;
+        year = builder.year;
+        playCount = builder.playCount;
+        fG = builder.fG;
+    }
+
     public String getSongClean() {
         return songClean;
     }
@@ -66,10 +77,69 @@ public class LocalSong {
         return fG;
     }
 
+
+    public static final class Builder {
+        private String songClean;
+        private String aRTISTCLEAN;
+        private String releaseYear;
+        private String cOMBINED;
+        private String first;
+        private String year;
+        private String playCount;
+        private String fG;
+
+        public Builder() {
+        }
+
+        public Builder songClean(String val) {
+            songClean = val;
+            return this;
+        }
+
+        public Builder aRTISTCLEAN(String val) {
+            aRTISTCLEAN = val;
+            return this;
+        }
+
+        public Builder releaseYear(String val) {
+            releaseYear = val;
+            return this;
+        }
+
+        public Builder cOMBINED(String val) {
+            cOMBINED = val;
+            return this;
+        }
+
+        public Builder first(String val) {
+            first = val;
+            return this;
+        }
+
+        public Builder year(String val) {
+            year = val;
+            return this;
+        }
+
+        public Builder playCount(String val) {
+            playCount = val;
+            return this;
+        }
+
+        public Builder fG(String val) {
+            fG = val;
+            return this;
+        }
+
+        public LocalSong build() {
+            return new LocalSong(this);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LocalSong)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         LocalSong localSong = (LocalSong) o;
 
