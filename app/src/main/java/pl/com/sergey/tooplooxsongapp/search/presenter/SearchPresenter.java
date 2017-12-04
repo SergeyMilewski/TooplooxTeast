@@ -30,23 +30,20 @@ public class SearchPresenter extends BasePresenter<SearchPresenter.MainActivityU
 
     private Filter filter = Filter.NONE;
     private CharSequence lastSearch;
-    private Scheduler mainScheduler;
-    private Scheduler backGroundScheduler;
+    private Scheduler androidMainThread = AndroidSchedulers.mainThread();
+    private Scheduler backgroundThread = Schedulers.io();
 
 
     @Inject
     public SearchPresenter(DataFacade dataFacade) {
         this.dataFacade = dataFacade;
-        mainScheduler = AndroidSchedulers.mainThread();
-        backGroundScheduler = Schedulers.io();
-
     }
 
     @VisibleForTesting
-    public SearchPresenter(DataFacade dataFacade, Scheduler main, Scheduler back) {
+    SearchPresenter(DataFacade dataFacade, Scheduler andr, Scheduler backg) {
         this.dataFacade = dataFacade;
-        mainScheduler = main;
-        backGroundScheduler = back;
+        androidMainThread = andr;
+        backgroundThread = backg;
     }
 
     @Override
@@ -63,7 +60,7 @@ public class SearchPresenter extends BasePresenter<SearchPresenter.MainActivityU
     }
 
     @VisibleForTesting
-    public void setLastSearch(CharSequence charSequence) {
+    void setLastSearch(CharSequence charSequence) {
         this.lastSearch = charSequence;
     }
 
@@ -97,8 +94,8 @@ public class SearchPresenter extends BasePresenter<SearchPresenter.MainActivityU
         dis = dataFacade.getListSongs(charSequence)
                 .filter(songDto -> filteredBy(songDto, charSequence))
                 .toSortedList((o1, o2) -> o1.getSong().compareTo(o2.getSong()))
-                .subscribeOn(backGroundScheduler)
-                .observeOn(mainScheduler)
+                .subscribeOn(backgroundThread)
+                .observeOn(androidMainThread)
                 .subscribe(data -> {
                     if (ui != null) {
                         ui.setData(data);

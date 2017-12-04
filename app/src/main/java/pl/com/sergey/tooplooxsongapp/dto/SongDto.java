@@ -15,11 +15,11 @@ import static pl.com.sergey.tooplooxsongapp.util.Utils.getLongFromString;
 public class SongDto implements Parcelable {
 
     private static final String EMPTY_STRING = "";
-    final String song;
-    final String nameSinger;
-    final String releaseDate;
-    final String urlImg;
-    final String source;
+    private final String song;
+    private final String nameSinger;
+    private final String releaseDate;
+    private final String urlImg;
+    private final String source;
 
 
     public SongDto(String song, String nameSinger, String releaseDate, String url, String source) {

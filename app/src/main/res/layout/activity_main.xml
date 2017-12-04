@@ -11,15 +11,6 @@
         android:fitsSystemWindows="true"
         app:elevation="0dp">
 
-        <!--  <android.support.v7.widget.Toolbar
-              android:id="@+id/toolbar"
-              android:layout_width="match_parent"
-              android:layout_height="?attr/actionBarSize"
-              android:background="?attr/colorPrimary"> -->
-
-
-        <!--    </android.support.v7.widget.Toolbar> -->
-
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main.collapsing"
             android:layout_width="match_parent"
@@ -48,9 +39,9 @@
                     android:hint="@string/search"
                     android:inputType="text|textNoSuggestions"
                     android:maxLines="1"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:textColor="@android:color/white"
+                    android:paddingLeft="@dimen/left_right_margin"
+                    android:paddingRight="@dimen/left_right_margin"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/white" />
 
                 <include layout="@layout/header_layout" />
@@ -70,11 +61,11 @@
 
     <TextView
         android:id="@+id/empty_list"
+        style="@style/CustomTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/no_result"
-        android:textColor="@color/colorAccent"
         android:textSize="22sp"
         android:textStyle="bold"
         android:visibility="gone" />

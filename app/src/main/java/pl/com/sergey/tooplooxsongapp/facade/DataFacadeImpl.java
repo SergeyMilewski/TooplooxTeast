@@ -29,7 +29,7 @@ public class DataFacadeImpl implements DataFacade {
 
     private final Context context;
 
-    private List<SongDto> remoteSongsCashed;
+    private List<SongDto> remoteSongsCached;
 
     private String latestSearch;
 
@@ -57,19 +57,19 @@ public class DataFacadeImpl implements DataFacade {
 
     private Flowable<SongDto> getRemoteSongs(CharSequence search) {
         String searchSongs = search.toString();
-        if (remoteSongsCashed == null) {
-            remoteSongsCashed = new ArrayList<>(200);
+        if (remoteSongsCached == null) {
+            remoteSongsCached = new ArrayList<>(200);
         }
-        if (searchSongs.equals(latestSearch) && !remoteSongsCashed.isEmpty() && isCashCompleted) {
-            return Flowable.fromIterable(remoteSongsCashed);
+        if (searchSongs.equals(latestSearch) && !remoteSongsCached.isEmpty() && isCashCompleted) {
+            return Flowable.fromIterable(remoteSongsCached);
         }
         latestSearch = searchSongs;
-        remoteSongsCashed.clear();
+        remoteSongsCached.clear();
         isCashCompleted = false;
         return itunsApi.searchSongs(searchSongs.replaceAll("\\s+", "+"), "music", "200")
                 .flatMap(result -> Observable.fromIterable(result.getResults()))
                 .map(s -> new SongDto(s, context.getResources().getStringArray(R.array.source)[1]))
-                .doOnNext(songsToCash -> remoteSongsCashed.add(songsToCash))
+                .doOnNext(songsToCache -> remoteSongsCached.add(songsToCache))
                 .doOnComplete(() -> isCashCompleted = true)
                 .toFlowable(BackpressureStrategy.BUFFER);
     }
